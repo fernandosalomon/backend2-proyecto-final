@@ -1,0 +1,13 @@
+{
+  "name": "proyecto_final",
+  "version": "0.1.0",
+  "description": "Proyecto Final para el curso de Backend II: Diseño y Arquitectura Backend Flex de Coderhouse",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch ./src/app.js"
+  },
+  "keywords": ["nodejs", "passport.js", "express", "handlebars"],
+  "author": "Fernando F. Salomón",
+  "license": "ISC",
+  "type": "module"
+}
