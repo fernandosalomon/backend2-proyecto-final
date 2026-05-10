@@ -4,6 +4,7 @@ dotenv.config();
 import handlebars from 'express-handlebars';
 import path from 'path';
 import { __dirname } from './utils.js';
+import viewRouter from './routes/views.routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -12,10 +13,7 @@ app.engine('handlebars', handlebars.engine());
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, './views'));
 
-app.get("/", (req, res) => {
-    res.render('home');
-})
-
+app.use("/", viewRouter);
 
 app.listen(PORT, () => {
     console.log("Server running on port ", PORT);
