@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #141414;
+  color: #faf9f5;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-container {
+  max-width: 600px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 0;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.form-container {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-control {
+  background-color: #30302e;
+  border: 1px solid #4a4a46;
+  border-radius: 7px;
+  padding: 0 12px;
+  min-height: 48px;
+  width: 100%;
+  caret-color: #fff;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.form-control::placeholder {
+  color: #9c9a92;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.form-control:hover {
+  border-color: #9c9a92;
+}
+
+.form-control:active,
+.form-control:focus,
+.form-control:focus-visible {
+  outline: 2px solid #1ed760;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0 20px;
+  min-height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #f7f6f5;
+  color: #30302e;
+  cursor: pointer;
+  border: 1px solid #4a4a46;
+  border-radius: 7px;
+  transition: all 0.5s ease-out;
+}
+
+.btn-submit:hover {
+  background-color: #edece9;
+  transform: translate(0, 0) rotate(0) skew(0) skewY(0) scaleX(1.015)
+    scaleY(1.015);
+}
+
+.separator {
+  width: 100%;
+  position: relative;
+  min-height: 48px;
+}
+
+.separator-bar {
+  background-color: #f7f6f5;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+}
+
+.separator-text {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  z-index: 1000;
+  background-color: #141414;
+  padding: 0 16px;
+}
+
+.oauth-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid #4a4a46;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+.oauth-btn:hover {
+  background-color: #000;
+  border-color: #000;
+}
+
+.oauth-text {
+  font-size: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #f7f6f5;
+}
+
+.oauth-icon {
+  width: 32px;
+  height: 32px;
+}

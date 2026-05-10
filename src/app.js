@@ -9,6 +9,10 @@ import viewRouter from './routes/views.routes.js';
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
 app.engine('handlebars', handlebars.engine());
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, './views'));
