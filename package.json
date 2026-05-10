@@ -6,8 +6,18 @@
   "scripts": {
     "dev": "node --watch ./src/app.js"
   },
-  "keywords": ["nodejs", "passport.js", "express", "handlebars"],
+  "keywords": [
+    "nodejs",
+    "passport.js",
+    "express",
+    "handlebars"
+  ],
   "author": "Fernando F. Salomón",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-handlebars": "^9.0.1"
+  }
 }
