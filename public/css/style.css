@@ -76,6 +76,8 @@ body {
 .form-control:focus,
 .form-control:focus-visible {
   outline: 2px solid #1ed760;
+  background-color: #30302e;
+  color: #FFF;
 }
 
 .btn-submit {
