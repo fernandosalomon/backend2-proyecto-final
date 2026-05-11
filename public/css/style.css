@@ -147,9 +147,22 @@ body {
   font-size: 16px;
   font-weight: 500;
   color: #f7f6f5;
+  margin: 0;
+  padding: 16px 0;
 }
 
 .oauth-icon {
   width: 32px;
   height: 32px;
+}
+
+.link{
+    text-decoration: none;
+    color: #1ed760;
+    font-weight: 500;
+}
+
+.link:visited{
+    text-decoration: none;
+    color: #1ed760;
 }
