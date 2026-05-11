@@ -57,7 +57,7 @@ body {
   min-height: 48px;
   width: 100%;
   caret-color: #fff;
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   font-weight: 400;
 }
@@ -76,8 +76,8 @@ body {
 .form-control:focus,
 .form-control:focus-visible {
   outline: 2px solid #1ed760;
-  background-color: #30302e;
-  color: #FFF;
+  background-color: #30302e !important;
+  color: #fff;
 }
 
 .btn-submit {
@@ -158,13 +158,13 @@ body {
   height: 32px;
 }
 
-.link{
-    text-decoration: none;
-    color: #1ed760;
-    font-weight: 500;
+.link {
+  text-decoration: none;
+  color: #1ed760;
+  font-weight: 500;
 }
 
-.link:visited{
-    text-decoration: none;
-    color: #1ed760;
+.link:visited {
+  text-decoration: none;
+  color: #1ed760;
 }
