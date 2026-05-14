@@ -6,6 +6,7 @@ import {
   getUserById,
   updateUser,
 } from "../controllers/users.controller.js";
+import passport from "passport";
 
 const usersRouter = express.Router();
 
@@ -15,13 +16,13 @@ usersRouter.get("/", async (req, res) => {
     res.status(response.status).json({
       success: response.success,
       message: response.message,
-      data: response.data
+      data: response.data,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     });
   }
 });
@@ -33,13 +34,13 @@ usersRouter.get("/:id", async (req, res) => {
     res.status(response.status).json({
       success: response.success,
       message: response.message,
-      data: response.data
+      data: response.data,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     });
   }
 });
@@ -50,7 +51,7 @@ usersRouter.post("/", async (req, res) => {
     return res.status(400).json({
       success: false,
       message: "No user data provided",
-      data: null
+      data: null,
     });
 
   try {
@@ -58,13 +59,13 @@ usersRouter.post("/", async (req, res) => {
     res.status(response.status).json({
       success: response.success,
       message: response.message,
-      data: response.data
+      data: response.data,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     });
   }
 });
@@ -75,7 +76,7 @@ usersRouter.put("/:id", async (req, res) => {
     return res.status(400).json({
       success: false,
       message: "User ID is required",
-      data: null
+      data: null,
     });
   }
 
@@ -84,7 +85,7 @@ usersRouter.put("/:id", async (req, res) => {
     return res.status(400).json({
       success: false,
       message: "No user data provided",
-      data: null
+      data: null,
     });
   }
 
@@ -93,13 +94,13 @@ usersRouter.put("/:id", async (req, res) => {
     res.status(response.status).json({
       success: response.success,
       message: response.message,
-      data: response.data
+      data: response.data,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     });
   }
 });
@@ -110,7 +111,7 @@ usersRouter.delete("/:id", async (req, res) => {
     return res.status(400).json({
       success: false,
       message: "User ID is required",
-      data: null
+      data: null,
     });
   }
   try {
@@ -118,15 +119,31 @@ usersRouter.delete("/:id", async (req, res) => {
     res.status(response.status).json({
       success: response.success,
       message: response.message,
-      data: response.data
+      data: response.data,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     });
   }
+});
+
+usersRouter.post("/register", passport.authenticate("register"), (req, res) => {
+  const user = req.user;
+  res.status(200).json({
+    success: true,
+    message: "User registered successfully",
+    data: user,
+  });
+});
+
+usersRouter.post("/login", passport.authenticate("login"), (req, res) => {
+  const user = req.user;
+  res
+    .status(200)
+    .json({ success: true, message: "User logged successfully", data: user });
 });
 
 export default usersRouter;

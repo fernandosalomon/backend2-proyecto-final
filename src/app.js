@@ -7,6 +7,8 @@ import { __dirname } from "./utils.js";
 import viewRouter from "./routes/views.routes.js";
 import mongoConnect from "./config/mongodb.config.js";
 import usersRouter from "./routes/users.routes.js";
+import initializePassport from "./config/passport.config.js";
+import passport from "passport";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -18,6 +20,10 @@ app.use(express.json());
 app.engine("handlebars", handlebars.engine());
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "./views"));
+
+initializePassport();
+app.use(passport.initialize());
+
 
 app.use("/", viewRouter);
 app.use("/api/v1/users", usersRouter);

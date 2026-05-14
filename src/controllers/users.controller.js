@@ -57,7 +57,6 @@ export const createUser = async (userData) => {
   const {
     firstname = "",
     lastname = "",
-    username = "",
     email,
     password = "",
     role = "user",
@@ -77,7 +76,6 @@ export const createUser = async (userData) => {
     const newUser = {
       firstname,
       lastname,
-      username,
       email,
       password,
       role,
