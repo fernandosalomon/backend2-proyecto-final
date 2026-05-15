@@ -9,13 +9,16 @@ import mongoConnect from "./config/mongodb.config.js";
 import usersRouter from "./routes/users.routes.js";
 import initializePassport from "./config/passport.config.js";
 import passport from "passport";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser(COOKIE_SECRET))
 
 app.engine("handlebars", handlebars.engine());
 app.set("view engine", "handlebars");

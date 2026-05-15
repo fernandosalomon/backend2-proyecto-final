@@ -1,10 +1,15 @@
 import passport from "passport";
 import passportLocal from "passport-local";
+import jwtPassport from "passport-jwt";
 import userModel from "../models/users.model.js";
 import { createUser } from "../controllers/users.controller.js";
 import { createHash, validateHash } from "../utils.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const localStrategy = passportLocal.Strategy;
+const JWTStrategy = jwtPassport.Strategy;
+const ExtractJWT = jwtPassport.ExtractJwt;
 
 const initializePassport = () => {
   passport.use(
@@ -40,27 +45,29 @@ const initializePassport = () => {
   );
 
   passport.use(
-    "login",
-    new localStrategy(
+    "jwt",
+    new JWTStrategy(
       {
-        passReqToCallback: true,
-        usernameField: "email",
+        jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
+        secretOrKey: process.env.JWT_SECRET,
       },
-      async (req, username, password, done) => {
+      async (jwt_payload, done) => {
         try {
-          const user = await userModel.findOne({ email: username });
-          if (!user) done("Invalid user credentials");
-
-          const passwordCheck = validateHash(password, user.password);
-          if (!passwordCheck) done("Invalid user creadentials");
-
-          done(null, user);
+          return done(null, jwt_payload.user);
         } catch (error) {
-          done("Error creating new user: " + error);
+          done(error);
         }
       },
     ),
   );
+};
+
+const cookieExtractor = (req) => {
+  let token = null;
+  if(req && req.cookies){
+    token = req.cookies['jwtCookieToken'];
+  }
+  return token;
 };
 
 export default initializePassport;
