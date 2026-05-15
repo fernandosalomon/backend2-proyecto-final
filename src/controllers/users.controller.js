@@ -1,4 +1,5 @@
 import userModel from "../models/users.model.js";
+import { createHash } from "../utils.js";
 
 export const getAllUsers = async () => {
   try {
@@ -7,7 +8,7 @@ export const getAllUsers = async () => {
       status: 200,
       success: true,
       message: "Users retrieved successfully",
-      data: users
+      data: users,
     };
   } catch (error) {
     console.log("Error retrieving information from database" + error);
@@ -15,7 +16,7 @@ export const getAllUsers = async () => {
       status: 500,
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     };
   }
 };
@@ -23,17 +24,18 @@ export const getAllUsers = async () => {
 export const getUserById = async (userID) => {
   try {
     const user = await userModel.findById(userID);
-    if (!user) return {
-      status: 404,
-      success: false,
-      message: "User not found",
-      data: null
-    };
+    if (!user)
+      return {
+        status: 404,
+        success: false,
+        message: "User not found",
+        data: null,
+      };
     return {
       status: 200,
       success: true,
       message: "User retrieved successfully",
-      data: user
+      data: user,
     };
   } catch (error) {
     console.log("Error retrieving information from database" + error);
@@ -41,7 +43,7 @@ export const getUserById = async (userID) => {
       status: 500,
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     };
   }
 };
@@ -52,7 +54,7 @@ export const createUser = async (userData) => {
       status: 400,
       success: false,
       message: "Required fields are missing: email and loggedBy are mandatory",
-      data: null
+      data: null,
     };
   const {
     firstname = "",
@@ -62,7 +64,6 @@ export const createUser = async (userData) => {
     role = "user",
     loggedBy,
   } = userData;
-
   try {
     const user = await userModel.findOne({ email });
     if (user)
@@ -70,24 +71,22 @@ export const createUser = async (userData) => {
         status: 409,
         success: false,
         message: "User already exists with this email",
-        data: null
+        data: null,
       };
-
     const newUser = {
       firstname,
       lastname,
       email,
-      password,
+      password: createHash(userData.password),
       role,
       loggedBy,
     };
-
     const createdUser = await userModel.create(newUser);
     return {
       status: 201,
       success: true,
       message: "User created successfully",
-      data: createdUser
+      data: createdUser,
     };
   } catch (error) {
     console.log("Error creating new user" + error);
@@ -95,7 +94,7 @@ export const createUser = async (userData) => {
       status: 500,
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     };
   }
 };
@@ -111,13 +110,13 @@ export const updateUser = async (userID, userNewData) => {
         status: 404,
         success: false,
         message: "User not found",
-        data: null
+        data: null,
       };
     return {
       status: 200,
       success: true,
       message: "User updated successfully",
-      data: updatedUser
+      data: updatedUser,
     };
   } catch (error) {
     console.log("Error updating user" + error);
@@ -125,7 +124,7 @@ export const updateUser = async (userID, userNewData) => {
       status: 500,
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     };
   }
 };
@@ -138,14 +137,14 @@ export const deleteUser = async (userID) => {
         status: 404,
         success: false,
         message: "User not found",
-        data: null
+        data: null,
       };
 
     return {
       status: 200,
       success: true,
       message: "User deleted successfully",
-      data: deletedUser
+      data: deletedUser,
     };
   } catch (error) {
     console.log("Error deleting user" + error);
@@ -153,7 +152,7 @@ export const deleteUser = async (userID) => {
       status: 500,
       success: false,
       message: "Internal server error",
-      data: null
+      data: null,
     };
   }
 };

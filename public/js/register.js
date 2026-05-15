@@ -14,9 +14,9 @@ form.addEventListener("submit", (e) => {
     },
   }).then((result) => {
     if (result.status === 201) {
-      window.location.replace("/api/v1/users/login");
-    }else{
-        alert("Error registrando al usuario");
+      window.location.replace("/login");
+    } else {
+      alert("Error registrando al usuario");
     }
   });
 });
