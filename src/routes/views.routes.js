@@ -14,4 +14,8 @@ viewRouter.get("/register", (req, res) => {
   res.render("register");
 });
 
+viewRouter.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
 export default viewRouter;
