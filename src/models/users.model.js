@@ -31,6 +31,44 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["local", "github", "google"],
     },
+    phone: {
+      type: String,
+      trim: true,
+      maxLength: 20,
+    },
+    bio: {
+      type: String,
+      trim: true,
+      maxLength: 200,
+    },
+    street: {
+      type: String,
+      trim: true,
+      maxLength: 40,
+      default: "",
+    },
+    city: {
+      type: String,
+      trim: true,
+      maxLength: 40,
+      default: "",
+    },
+    state: {
+      type: String,
+      trim: true,
+      maxLength: 40,
+      default: "",
+    },
+    zip: {
+      type: String,
+      trim: true,
+      maxLength: 6,
+      default: "",
+    },
+    avatarURL: {
+      type: String,
+      default: ""
+    }
   },
   { timestamps: true },
 );
