@@ -18,3 +18,21 @@ export const generateToken = (payload) =>
   jwt.sign(payload, __JWT_SECRET, { expiresIn: "1h" });
 
 export const validateToken = (token) => jwt.verify(token, __JWT_SECRET);
+
+export const auth = (role) => {
+  return async(req, res, next) => {
+    if(!req.user) return res.status(401).json({
+      success: false,
+      message: "Unauthorized: User not found in JWT",
+      data: null,
+    });
+
+    if(req.user.role != role) return res.status(403).json({
+      success: false,
+      message: "Forbidden: User does not have the required role",
+      data: null,
+    });
+
+    next();
+  }
+}

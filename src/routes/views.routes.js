@@ -18,4 +18,13 @@ viewRouter.get("/profile", (req, res) => {
   res.render("profile");
 });
 
+viewRouter.get("/error", (req, res) => {
+  res.render("error");
+});
+
+viewRouter.get("/forbidden", (req, res) => {
+  res.render("forbidden");
+});
+
+
 export default viewRouter;

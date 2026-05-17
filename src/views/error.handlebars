@@ -1,0 +1,66 @@
+<div class="main-container d-flex align-items-center justify-content-center">
+  <div class="error-page-wrapper">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="avatar">
+        <svg viewBox="0 0 24 24"><path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"
+          /></svg>
+      </div>
+      <div class="header-info">
+        <div class="header-name">ChatBot IA</div>
+        <div class="header-status">
+          <div class="status-dot"></div>
+          Ruta no encontrada
+        </div>
+      </div>
+      <div class="code-display">404</div>
+    </div>
+
+    <!-- Card de error -->
+    <div class="card">
+      <div class="error-pill">
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 24 24"
+          stroke="#f87171"
+          fill="none"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        ERROR 404
+      </div>
+      <div class="card-title">Página no encontrada</div>
+      <div class="card-desc">Esta ruta no existe en mi base de datos. Puede que
+        se haya movido, eliminado, o que nunca haya existido.</div>
+      <div class="path-tag">GET /pagina-secreta → 404 Not Found</div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="actions">
+      <a href="/" class="btn btn-primary">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        Ir al inicio
+      </a>
+      <button onclick="history.back()" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+        Volver atrás
+      </button>
+    </div>
+
+    <p class="footer-note"><span>ChatBot IA</span>
+      · Todos los derechos reservados</p>
+
+  </div>
+</div>
