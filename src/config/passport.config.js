@@ -45,13 +45,24 @@ const initializePassport = () => {
       },
       async (jwt_payload, done) => {
         try {
-          return done(null, jwt_payload.user);
+          return done(null, { user: jwt_payload });
         } catch (error) {
           done(error);
         }
       },
     ),
   );
+
+  passport.serializeUser((user, done) => done(null, user._id));
+
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await userModel.findById(id);
+      done(null, user);
+    } catch (error) {
+      done("Error al deserializar al usuario: " + error);
+    }
+  });
 };
 
 const cookieExtractor = (req) => {

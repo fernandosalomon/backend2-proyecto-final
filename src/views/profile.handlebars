@@ -11,8 +11,8 @@
                   alt="Maxwell Admin"
                 />
               </div>
-              <h5 class="user-name">Yuki Hayashi</h5>
-              <h6 class="user-email">yuki@Maxwell.com</h6>
+              <h5 class="user-name">{{this.user.firstname}} {{this.user.lastname}}</h5>
+              <h6 class="user-email">{{this.user.email}}</h6>
             </div>
             <div class="about">
               <h5 class="mb-2 text-primary">About</h5>
@@ -38,6 +38,7 @@
                   class="form-control"
                   id="firstname"
                   placeholder="Enter firstname name"
+                  value={{this.user.firstname}}
                 />
               </div>
             </div>
@@ -49,6 +50,7 @@
                   class="form-control"
                   id="lastname"
                   placeholder="Enter lastname name"
+                  value={{this.user.lastname}}
                 />
               </div>
             </div>
@@ -71,6 +73,7 @@
                   class="form-control"
                   id="email"
                   placeholder="Enter email"
+                  value={{this.user.email}}
                 />
               </div>
             </div>
@@ -124,23 +127,13 @@
               </div>
             </div>
           </div>
-          <div class="row gutters">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="text-right">
+          <div class="d-flex gap-3">
                 <button
                   type="button"
                   id="submit"
                   name="submit"
-                  class="btn btn-secondary mt-3"
-                >Cancel</button>
-                <button
-                  type="button"
-                  id="submit"
-                  name="submit"
-                  class="btn btn-primary mt-3"
+                  class="btn btn-primary mt-5"
                 >Update</button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
