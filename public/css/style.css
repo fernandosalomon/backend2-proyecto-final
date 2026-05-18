@@ -9,7 +9,7 @@
   --surface: #151820;
   --surface2: #1c202c;
   --border: rgba(255, 255, 255, 0.07);
-  --accent: #5b8af5;
+  --accent: ;
   --accent-dim: rgba(91, 138, 245, 0.12);
   --accent2: #a78bfa;
   --text: #e8eaf0;
@@ -28,6 +28,63 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+/* Buttons */
+
+.btn {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+  border: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: #1a56ee;
+  color: white;
+}
+.btn-primary:hover {
+  background: #5b8af5;
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: var(--surface2);
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* End of buttons */
 
 .main-container {
   max-width: 600px;
@@ -96,26 +153,6 @@ body {
   color: #fff;
 }
 
-.btn-submit {
-  width: 100%;
-  padding: 0 20px;
-  min-height: 48px;
-  font-size: 16px;
-  font-weight: 500;
-  background-color: #f7f6f5;
-  color: #30302e;
-  cursor: pointer;
-  border: 1px solid #4a4a46;
-  border-radius: 7px;
-  transition: all 0.5s ease-out;
-}
-
-.btn-submit:hover {
-  background-color: #edece9;
-  transform: translate(0, 0) rotate(0) skew(0) skewY(0) scaleX(1.015)
-    scaleY(1.015);
-}
-
 .separator {
   width: 100%;
   position: relative;
@@ -141,23 +178,6 @@ body {
   z-index: 1000;
   background-color: #141414;
   padding: 0 16px;
-}
-
-.oauth-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  background-color: transparent;
-  border: 1px solid #4a4a46;
-  border-radius: 7px;
-  cursor: pointer;
-  transition: all 0.5s ease-out;
-}
-
-.oauth-btn:hover {
-  background-color: #000;
-  border-color: #000;
 }
 
 .oauth-text {
@@ -433,60 +453,6 @@ body {
   animation-delay: 0.3s;
 }
 
-.btn {
-  flex: 1;
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 600;
-  font-family: "Sora", sans-serif;
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  transition:
-    transform 0.15s ease,
-    background 0.15s ease;
-  border: none;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: white;
-}
-.btn-primary:hover {
-  background: #4a7af0;
-}
-
-.btn-secondary {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-.btn-secondary:hover {
-  background: var(--surface2);
-}
-
-.btn svg {
-  width: 15px;
-  height: 15px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex-shrink: 0;
-}
-
 /* ── Footer ── */
 .footer-note {
   font-size: 11px;
@@ -633,7 +599,7 @@ body {
 
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: #FFF;
+  color: #fff;
   max-width: 520px;
   margin-bottom: 2.5rem;
   animation: fadeUp 0.7s 0.2s ease both;
@@ -681,20 +647,6 @@ body {
   margin-bottom: 2rem;
 }
 
-.btn-primary {
-  background: var(--terracotta);
-  color: var(--white);
-  padding: .8rem 2rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: transform .15s, box-shadow .2s;
-  box-shadow: 0 4px 20px rgba(196,97,74,.35);
-}
-
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,97,74,.4); }
-
 .btn-primary--dark {
   background: var(--cream);
   color: var(--ink);
@@ -741,6 +693,12 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+label {
+  width: 100%;
+  text-align: start;
+  margin-bottom: 0.5rem;
 }
 
 /* ── Responsive ───────────────────────────────────── */
