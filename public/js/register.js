@@ -5,6 +5,7 @@ form.addEventListener("submit", (e) => {
   const data = new FormData(form);
   const obj = {};
   data.forEach((value, key) => (obj[key] = value));
+  console.log(data);
 
   fetch("/api/v1/auth/register", {
     method: "POST",
@@ -14,7 +15,7 @@ form.addEventListener("submit", (e) => {
     },
   }).then((result) => {
     if (result.status === 201) {
-      window.location.replace("/login");
+      window.location.replace("/api/v1/login");
     } else {
       alert("Error registrando al usuario");
     }

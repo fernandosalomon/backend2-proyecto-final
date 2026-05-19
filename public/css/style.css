@@ -223,6 +223,7 @@ input[type="text"]:focus {
     0 8px 48px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.04) inset;
   animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  overflow: hidden;
 }
 
 .logo-area {
@@ -739,4 +740,144 @@ h1 em {
 }
 .btn-hero:active {
   transform: scale(0.97);
+}
+
+/* Profile page */
+
+/* Cover strip */
+.cover {
+  height: 80px;
+  background: linear-gradient(
+    120deg,
+    rgba(212, 134, 90, 0.18) 0%,
+    rgba(184, 105, 58, 0.1) 50%,
+    rgba(212, 134, 90, 0.06) 100%
+  );
+  border-bottom: 0.5px solid var(--border-color);
+}
+
+.card-body {
+  padding: 0 32px 36px;
+}
+
+/* Avatar */
+.avatar-wrap {
+  margin-top: -36px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4865a 0%, #b8693a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-size: 26px;
+  font-weight: 400;
+  color: #fff;
+  border: 3px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 52px;
+  height: 52px;
+}
+
+/* Name & role */
+.profile-name {
+  font-family: var(--font-family);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+/* Divider */
+.divider {
+  height: 0.8px;
+  background: var(--border-color);
+  margin-bottom: 24px;
+}
+
+/* Fields */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 0.5px solid var(--border-color);
+}
+
+.field-row:last-child {
+  border-bottom: none;
+}
+
+.field-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #2A2721;
+  border: 0.5px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.field-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: #D4865A;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.field-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.field-label {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text-primary-muted);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.field-val {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.field-badge {
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: rgba(61, 189, 125, 0.1);
+  color: #3dbd7d;
+  border: 0.5px solid rgba(61, 189, 125, 0.18);
+  flex-shrink: 0;
 }

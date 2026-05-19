@@ -18,7 +18,7 @@ viewRouter.get(
   "/profile",
   passport.authenticate("jwt", {
     session: false,
-    failureRedirect: "/forbidden",
+    failureRedirect: "/error",
   }),
   (req, res) => {
     const userInfo = req.user;
