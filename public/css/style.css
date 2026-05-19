@@ -958,7 +958,7 @@ h1 em {
   align-items: center;
 }
 
-.btn-primary {
+.btn-new-user {
   height: 38px;
   padding: 0 18px;
   background: #d4865a;
@@ -975,7 +975,7 @@ h1 em {
   transition: background 0.18s;
 }
 
-.btn-primary svg {
+.btn-new-user svg {
   width: 14px;
   height: 14px;
   stroke: #1a1815;
@@ -984,7 +984,7 @@ h1 em {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.btn-primary:hover {
+.btn-new-user:hover {
   background: #e0956a;
 }
 
