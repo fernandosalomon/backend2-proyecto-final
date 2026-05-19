@@ -28,7 +28,91 @@ body {
   font-family: var(--font-family);
 }
 
+h1 {
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
 /* Shared */
+
+.navbar {
+  background-color: var(--overlay);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 0.5px solid transparent;
+  height: 80px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #d4865a 0%, #b8693a 100%);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-mark svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.logo-name {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.nav-cta {
+  height: 38px;
+  padding: 0 20px;
+  background: var(--btn-primary);
+  color: #1a1815;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-family);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-cta:hover {
+  background: #e0956a;
+}
+
+.footer {
+  background-color: var(--overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  width: 100%;
+}
+
+.footer-text {
+  color: var(--text-primary-muted);
+  margin: 0;
+}
 
 label {
   display: block;
@@ -517,7 +601,142 @@ input[type="text"]:focus {
 }
 
 .btn-ghost:hover {
-  background: #2A2721;
+  background: #2a2721;
   color: var(--text-primary);
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Hero page */
+.hero {
+  height: calc(100vh - 128px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Decorative rings */
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 134, 90, 0.07);
+  pointer-events: none;
+}
+.hero-ring-1 {
+  width: 700px;
+  height: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hero-ring-2 {
+  width: 480px;
+  height: 480px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-color: rgba(212, 134, 90, 0.05);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2a2721;
+  border: 0.5px solid var(--border-color);
+  border-radius: 100px;
+  padding: 6px 16px 6px 10px;
+  margin-bottom: 36px;
+  animation: fadeUp 0.5s 0.1s both;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4865a;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.hero-badge span {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary-muted);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: var(--font-family);
+  font-size: clamp(42px, 7vw, 80px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  max-width: 720px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s 0.2s both;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--text-accent);
+}
+
+.hero-sub {
+  font-size: clamp(15px, 2vw, 17px);
+  color: var(--text-primary-muted);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: 48px;
+  animation: fadeUp 0.6s 0.3s both;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.6s 0.4s both;
+}
+
+.btn-hero {
+  height: 50px;
+  padding: 0 28px;
+  background: var(--btn-primary);
+  color: #1a1815;
+  border: none;
+  border-radius: 14px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    transform 0.12s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-hero:hover {
+  background: #e0956a;
+}
+.btn-hero:active {
+  transform: scale(0.97);
 }
