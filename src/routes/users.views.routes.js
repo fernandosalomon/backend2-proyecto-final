@@ -26,6 +26,6 @@ viewRouter.get(
   },
 );
 
-viewRouter.get("/admin", authorization("admin"), (req, res) => {res.render("admin")});
+viewRouter.get("/admin", (req, res) => {res.render("admin")});
 
 export default viewRouter;

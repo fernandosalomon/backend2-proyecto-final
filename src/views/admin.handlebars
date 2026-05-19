@@ -1,1 +1,278 @@
-<h1>ADMIN PAGE</h1>
+<!-- NAV -->
+<nav class="navbar">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="#" class="logo-area m-0">
+      <div class="logo-mark">
+        <svg viewBox="0 0 20 20"><path d="M3 4.5C3 3.67 3.67 3 4.5 3h11C16.33 3 17 3.67 17 4.5v8c0 .83-.67 1.5-1.5 1.5H7l-4 3V4.5z"/></svg>
+      </div>
+      <span class="logo-name">Aether Chat</span>
+    </a>
+    <span class="nav-badge">Admin</span>
+  </div>
+  <div class="nav-right">
+    <div class="nav-avatar">A</div>
+  </div>
+</nav>
+ 
+<!-- PAGE -->
+<div class="page">
+ 
+  <div class="page-header">
+    <div class="page-title-wrap">
+      <div class="page-label">Panel de administración</div>
+      <h1 class="page-title">Gestión de <em>usuarios</em></h1>
+    </div>
+    <div class="page-actions">
+      <button class="btn-primary" onclick="showToast('success', 'Función disponible próximamente.')">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Nuevo usuario
+      </button>
+    </div>
+  </div>
+ 
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input px-5" type="text" placeholder="Buscar por nombre o email…" id="searchInput" oninput="filterTable()">
+    </div>
+    <select class="filter-select" id="statusFilter" onchange="filterTable()">
+      <option value="">Todos los estados</option>
+      <option value="active">Activo</option>
+      <option value="blocked">Bloqueado</option>
+      <option value="pending">Pendiente</option>
+    </select>
+    <select class="filter-select" id="planFilter" onchange="filterTable()">
+      <option value="">Todos los planes</option>
+      <option value="Pro">Pro</option>
+      <option value="Free">Free</option>
+    </select>
+    <span class="toolbar-count" id="rowCount">7 usuarios</span>
+  </div>
+ 
+  <!-- TABLE -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Estado</th>
+          <th>Plan</th>
+          <th>Registro</th>
+          <th>Último acceso</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr data-status="active" data-plan="Pro">
+          <td>
+            <div class="user-cell">
+              <div class="u-avatar av-a">V</div>
+              <div><div class="u-name">Valentina Rossi</div><div class="u-email">vale@studio.io</div></div>
+            </div>
+          </td>
+          <td><span class="badge badge-active"><span class="badge-dot"></span>Activo</span></td>
+          <td><span class="plan plan-pro">Pro</span></td>
+          <td><span class="plan">12 mar 2024</span></td>
+          <td><span class="plan">Hace 2 horas</span></td>
+          <td>
+            <div class="actions">
+              <button class="act-btn" title="Modificar" onclick="showToast('edit', 'Editar usuario: Valentina Rossi')">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="act-btn warn" title="Bloquear" onclick="openModal('block','Valentina Rossi',this)">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </button>
+              <button class="act-btn danger" title="Eliminar" onclick="openModal('delete','Valentina Rossi',this)">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr data-status="active" data-plan="Pro">
+          <td>
+            <div class="user-cell">
+              <div class="u-avatar av-b">M</div>
+              <div><div class="u-name">Mateo García</div><div class="u-email">mateo@devhub.ar</div></div>
+            </div>
+          </td>
+          <td><span class="badge badge-active"><span class="badge-dot"></span>Activo</span></td>
+          <td><span class="plan plan-pro">Pro</span></td>
+          <td><span class="plan">3 ene 2024</span></td>
+          <td><span class="plan">Hace 1 día</span></td>
+          <td>
+            <div class="actions">
+              <button class="act-btn" title="Modificar" onclick="showToast('edit', 'Editar usuario: Mateo García')">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="act-btn warn" title="Bloquear" onclick="openModal('block','Mateo García',this)">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </button>
+              <button class="act-btn danger" title="Eliminar" onclick="openModal('delete','Mateo García',this)">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr data-status="blocked" data-plan="Free">
+          <td>
+            <div class="user-cell">
+              <div class="u-avatar av-c">L</div>
+              <div><div class="u-name">Lucía Fernández</div><div class="u-email">lu.fernandez@mail.com</div></div>
+            </div>
+          </td>
+          <td><span class="badge badge-blocked"><span class="badge-dot"></span>Bloqueado</span></td>
+          <td><span class="plan">Free</span></td>
+          <td><span class="plan">18 feb 2024</span></td>
+          <td><span class="plan">Hace 3 semanas</span></td>
+          <td>
+            <div class="actions">
+              <button class="act-btn" title="Modificar" onclick="showToast('edit', 'Editar usuario: Lucía Fernández')">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="act-btn warn" title="Desbloquear" onclick="openModal('unblock','Lucía Fernández',this)">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+              </button>
+              <button class="act-btn danger" title="Eliminar" onclick="openModal('delete','Lucía Fernández',this)">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr data-status="pending" data-plan="Free">
+          <td>
+            <div class="user-cell">
+              <div class="u-avatar av-d">S</div>
+              <div><div class="u-name">Santiago López</div><div class="u-email">santi@outlook.com</div></div>
+            </div>
+          </td>
+          <td><span class="badge badge-pending"><span class="badge-dot"></span>Pendiente</span></td>
+          <td><span class="plan">Free</span></td>
+          <td><span class="plan">2 may 2025</span></td>
+          <td><span class="plan">Nunca</span></td>
+          <td>
+            <div class="actions">
+              <button class="act-btn" title="Modificar" onclick="showToast('edit', 'Editar usuario: Santiago López')">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="act-btn warn" title="Bloquear" onclick="openModal('block','Santiago López',this)">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </button>
+              <button class="act-btn danger" title="Eliminar" onclick="openModal('delete','Santiago López',this)">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr data-status="active" data-plan="Pro">
+          <td>
+            <div class="user-cell">
+              <div class="u-avatar av-e">C</div>
+              <div><div class="u-name">Camila Torres</div><div class="u-email">camila@agency.co</div></div>
+            </div>
+          </td>
+          <td><span class="badge badge-active"><span class="badge-dot"></span>Activo</span></td>
+          <td><span class="plan plan-pro">Pro</span></td>
+          <td><span class="plan">7 jul 2023</span></td>
+          <td><span class="plan">Hace 5 horas</span></td>
+          <td>
+            <div class="actions">
+              <button class="act-btn" title="Modificar" onclick="showToast('edit', 'Editar usuario: Camila Torres')">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="act-btn warn" title="Bloquear" onclick="openModal('block','Camila Torres',this)">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </button>
+              <button class="act-btn danger" title="Eliminar" onclick="openModal('delete','Camila Torres',this)">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr data-status="active" data-plan="Free">
+          <td>
+            <div class="user-cell">
+              <div class="u-avatar av-f">R</div>
+              <div><div class="u-name">Rodrigo Méndez</div><div class="u-email">rod.mendez@gmail.com</div></div>
+            </div>
+          </td>
+          <td><span class="badge badge-active"><span class="badge-dot"></span>Activo</span></td>
+          <td><span class="plan">Free</span></td>
+          <td><span class="plan">30 oct 2024</span></td>
+          <td><span class="plan">Ayer</span></td>
+          <td>
+            <div class="actions">
+              <button class="act-btn" title="Modificar" onclick="showToast('edit', 'Editar usuario: Rodrigo Méndez')">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="act-btn warn" title="Bloquear" onclick="openModal('block','Rodrigo Méndez',this)">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </button>
+              <button class="act-btn danger" title="Eliminar" onclick="openModal('delete','Rodrigo Méndez',this)">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr data-status="blocked" data-plan="Free">
+          <td>
+            <div class="user-cell">
+              <div class="u-avatar av-g">N</div>
+              <div><div class="u-name">Natalia Ibáñez</div><div class="u-email">nati.ibanez@corp.net</div></div>
+            </div>
+          </td>
+          <td><span class="badge badge-blocked"><span class="badge-dot"></span>Bloqueado</span></td>
+          <td><span class="plan">Free</span></td>
+          <td><span class="plan">15 ago 2023</span></td>
+          <td><span class="plan">Hace 2 meses</span></td>
+          <td>
+            <div class="actions">
+              <button class="act-btn" title="Modificar" onclick="showToast('edit', 'Editar usuario: Natalia Ibáñez')">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button class="act-btn warn" title="Desbloquear" onclick="openModal('unblock','Natalia Ibáñez',this)">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+              </button>
+              <button class="act-btn danger" title="Eliminar" onclick="openModal('delete','Natalia Ibáñez',this)">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+ 
+    <div class="pagination">
+      <span class="pag-info">Mostrando 1–7 de 7 usuarios</span>
+      <div class="pag-btns">
+        <button class="pag-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="pag-btn active">1</button>
+        <button class="pag-btn">2</button>
+        <button class="pag-btn">3</button>
+        <button class="pag-btn"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+ 
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-icon" id="modalIcon">
+      <svg id="modalIconSvg" viewBox="0 0 24 24"></svg>
+    </div>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModalDirect()">Cancelar</button>
+      <button class="modal-confirm" id="modalConfirm" onclick="confirmAction()"></button>
+    </div>
+  </div>
+</div>
+ 
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-dot" id="toastDot"></div>
+  <span id="toastMsg"></span>
+</div>
