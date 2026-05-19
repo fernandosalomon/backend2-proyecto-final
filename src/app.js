@@ -1,17 +1,19 @@
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
-import handlebars from "express-handlebars";
 import path from "path";
 import { __dirname } from "./utils.js";
-import viewRouter from "./routes/views.routes.js";
-import mongoConnect from "./config/mongodb.config.js";
-import usersRouter from "./routes/users.routes.js";
-import initializePassport from "./config/passport.config.js";
-import passport from "passport";
-import cookieParser from "cookie-parser";
+
+import handlebars from "express-handlebars";
 import session from "express-session";
+import cookieParser from "cookie-parser";
+import mongoConnect from "./config/mongodb.config.js";
 import mongoStore from "connect-mongo";
+import passport from "passport";
+import initializePassport from "./config/passport.config.js";
+
+import viewRouter from "./routes/views.routes.js";
+import usersRouter from "./routes/users.views.routes.js";
 import authRouter from "./routes/auth.routes.js";
 
 const app = express();
@@ -46,8 +48,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", viewRouter);
-app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1", usersRouter);
 
 mongoConnect();
 
